@@ -101,7 +101,7 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: resavision@localhost
+        from: resavision@localhost11
     swagger:
         default-include-pattern: /api/.*
         title: resavision API
