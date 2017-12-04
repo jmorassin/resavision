@@ -1,0 +1,43 @@
+
+<div *ngIf="responsable">
+    <h2><span jhiTranslate="resavisionApp.responsable.detail.title">Responsable</span> {{responsable.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resavisionApp.responsable.civilite">Civilite</span></dt>
+        <dd>
+            <span jhiTranslate="{{'resavisionApp.Civilite.' + responsable.civilite}}">{{responsable.civilite}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.responsable.checkTel">Check Tel</span></dt>
+        <dd>
+            <span>{{responsable.checkTel}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.responsable.chekMail">Chek Mail</span></dt>
+        <dd>
+            <span>{{responsable.chekMail}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.responsable.user">User</span></dt>
+        <dd>
+            {{responsable.user?.id}}
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.responsable.boutique">Boutique</span></dt>
+        <dd>
+            <div *ngIf="responsable.boutique">
+                <a [routerLink]="['/boutique', responsable.boutique?.id]">{{responsable.boutique?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'responsable/'+ responsable.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

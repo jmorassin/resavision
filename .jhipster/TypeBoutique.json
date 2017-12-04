@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "typeSite",
+            "otherEntityName": "typeSite",
+            "otherEntityField": "nom"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "listBoutique",
+            "otherEntityName": "boutique",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "typeBoutique"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171204204547",
+    "entityTableName": "type_boutique",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false
+}

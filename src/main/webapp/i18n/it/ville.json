@@ -1,0 +1,23 @@
+{
+    "resavisionApp": {
+        "ville" : {
+            "home": {
+                "title": "Villes",
+                "createLabel": "Genera un nuovo Ville",
+                "createOrEditLabel": "Genera o modifica un Ville",
+                "search": "Cerca Ville"
+            },
+            "created": "&Egrave; stato generato un nuovo Ville con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Ville identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Ville con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Ville {{ id }}?"
+            },
+            "detail": {
+                "title": "Ville"
+            },
+            "nom": "Nom",
+            "codePostal": "Code Postal"
+        }
+    }
+}

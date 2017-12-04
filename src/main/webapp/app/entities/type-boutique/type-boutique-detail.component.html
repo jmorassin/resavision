@@ -1,0 +1,31 @@
+
+<div *ngIf="typeBoutique">
+    <h2><span jhiTranslate="resavisionApp.typeBoutique.detail.title">Type Boutique</span> {{typeBoutique.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resavisionApp.typeBoutique.nom">Nom</span></dt>
+        <dd>
+            <span>{{typeBoutique.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.typeBoutique.typeSite">Type Site</span></dt>
+        <dd>
+            <div *ngIf="typeBoutique.typeSite">
+                <a [routerLink]="['/type-site', typeBoutique.typeSite?.id]">{{typeBoutique.typeSite?.nom}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'type-boutique/'+ typeBoutique.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

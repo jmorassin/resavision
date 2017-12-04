@@ -1,0 +1,26 @@
+{
+    "resavisionApp": {
+        "employe" : {
+            "home": {
+                "title": "Employes",
+                "createLabel": "Genera un nuovo Employe",
+                "createOrEditLabel": "Genera o modifica un Employe",
+                "search": "Cerca Employe"
+            },
+            "created": "&Egrave; stato generato un nuovo Employe con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Employe identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Employe con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Employe {{ id }}?"
+            },
+            "detail": {
+                "title": "Employe"
+            },
+            "civilite": "Civilite",
+            "checkTel": "Check Tel",
+            "chekMail": "Chek Mail",
+            "user": "User",
+            "boutique": "Boutique"
+        }
+    }
+}

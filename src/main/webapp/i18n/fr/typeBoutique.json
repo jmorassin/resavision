@@ -1,0 +1,24 @@
+{
+    "resavisionApp": {
+        "typeBoutique" : {
+            "home": {
+                "title": "TypeBoutiques",
+                "createLabel": "Créer un nouveau Type Boutique",
+                "createOrEditLabel": "Créer ou éditer un Type Boutique",
+                "search": "Recherche pour Type Boutique"
+            },
+            "created": "Un nouveau Type Boutique a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Boutique avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Boutique avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Boutique {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type Boutique"
+            },
+            "nom": "Nom",
+            "typeSite": "Type Site",
+            "listBoutique": "List Boutique"
+        }
+    }
+}

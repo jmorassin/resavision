@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "employe"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "boutique",
+            "otherEntityName": "boutique",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "civilite",
+            "fieldType": "Civilite",
+            "fieldValues": "MME,MELLE,MR"
+        },
+        {
+            "fieldName": "checkTel",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "chekMail",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20171204204551",
+    "entityTableName": "employe",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false
+}

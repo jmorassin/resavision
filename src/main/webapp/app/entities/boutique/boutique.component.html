@@ -1,0 +1,100 @@
+<div>
+    <h2>
+        <span jhiTranslate="resavisionApp.boutique.home.title">Boutiques</span>
+        <button class="btn btn-primary float-right jh-create-entity create-boutique" [routerLink]="['/', { outlets: { popup: ['boutique-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="resavisionApp.boutique.home.createLabel">
+            Create new Boutique
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'resavisionApp.boutique.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="boutiques">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nom"><span jhiTranslate="resavisionApp.boutique.nom">Nom</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="logo"><span jhiTranslate="resavisionApp.boutique.logo">Logo</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="url"><span jhiTranslate="resavisionApp.boutique.url">Url</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="numTelephone"><span jhiTranslate="resavisionApp.boutique.numTelephone">Num Telephone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="mail"><span jhiTranslate="resavisionApp.boutique.mail">Mail</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="adresse1"><span jhiTranslate="resavisionApp.boutique.adresse1">Adresse 1</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="adresse2"><span jhiTranslate="resavisionApp.boutique.adresse2">Adresse 2</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ville.nom"><span jhiTranslate="resavisionApp.boutique.ville">Ville</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let boutique of boutiques ;trackBy: trackId">
+                <td><a [routerLink]="['../boutique', boutique.id ]">{{boutique.id}}</a></td>
+                <td>{{boutique.nom}}</td>
+                <td>
+                    <a *ngIf="boutique.logo" (click)="openFile(boutique.logoContentType, boutique.logo)">
+                        <img [src]="'data:' + boutique.logoContentType + ';base64,' + boutique.logo" style="max-height: 30px;" alt="boutique image"/>
+                    </a>
+                    <span *ngIf="boutique.logo">{{boutique.logoContentType}}, {{byteSize(boutique.logo)}}</span>
+                </td>
+                <td>{{boutique.url}}</td>
+                <td>{{boutique.numTelephone}}</td>
+                <td>{{boutique.mail}}</td>
+                <td>{{boutique.adresse1}}</td>
+                <td>{{boutique.adresse2}}</td>
+                <td>
+                    <div *ngIf="boutique.ville">
+                        <a [routerLink]="['../ville', boutique.ville?.id ]" >{{boutique.ville?.nom}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../boutique', boutique.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'boutique/'+ boutique.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'boutique/'+ boutique.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="boutiques && boutiques.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

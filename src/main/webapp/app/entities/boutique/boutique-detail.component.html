@@ -1,0 +1,66 @@
+
+<div *ngIf="boutique">
+    <h2><span jhiTranslate="resavisionApp.boutique.detail.title">Boutique</span> {{boutique.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resavisionApp.boutique.nom">Nom</span></dt>
+        <dd>
+            <span>{{boutique.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.logo">Logo</span></dt>
+        <dd>
+            <div *ngIf="boutique.logo">
+                <a (click)="openFile(boutique.logoContentType, boutique.logo)">
+                    <img [src]="'data:' + boutique.logoContentType + ';base64,' + boutique.logo" style="max-width: 100%;" alt="boutique image"/>
+                </a>
+                {{boutique.logoContentType}}, {{byteSize(boutique.logo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.url">Url</span></dt>
+        <dd>
+            <span>{{boutique.url}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.numTelephone">Num Telephone</span></dt>
+        <dd>
+            <span>{{boutique.numTelephone}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.mail">Mail</span></dt>
+        <dd>
+            <span>{{boutique.mail}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.adresse1">Adresse 1</span></dt>
+        <dd>
+            <span>{{boutique.adresse1}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.adresse2">Adresse 2</span></dt>
+        <dd>
+            <span>{{boutique.adresse2}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.ville">Ville</span></dt>
+        <dd>
+            <div *ngIf="boutique.ville">
+                <a [routerLink]="['/ville', boutique.ville?.id]">{{boutique.ville?.nom}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.boutique.typeBoutique">Type Boutique</span></dt>
+        <dd>
+            <span *ngFor="let typeBoutique of boutique.typeBoutiques; let last = last">
+                <a [routerLink]="['/type-boutique', typeBoutique?.id ]">{{typeBoutique.nom}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'boutique/'+ boutique.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

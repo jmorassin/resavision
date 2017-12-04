@@ -1,0 +1,24 @@
+{
+    "resavisionApp": {
+        "typeBoutique" : {
+            "home": {
+                "title": "Type Boutiques",
+                "createLabel": "Create a new Type Boutique",
+                "createOrEditLabel": "Create or edit a Type Boutique",
+                "search": "Search for Type Boutique"
+            },
+            "created": "A new Type Boutique is created with identifier {{ param }}",
+            "updated": "A Type Boutique is updated with identifier {{ param }}",
+            "deleted": "A Type Boutique is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Boutique {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Boutique"
+            },
+            "nom": "Nom",
+            "typeSite": "Type Site",
+            "listBoutique": "List Boutique"
+        }
+    }
+}

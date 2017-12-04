@@ -1,0 +1,23 @@
+{
+    "resavisionApp": {
+        "typeSite" : {
+            "home": {
+                "title": "Type Sites",
+                "createLabel": "Create a new Type Site",
+                "createOrEditLabel": "Create or edit a Type Site",
+                "search": "Search for Type Site"
+            },
+            "created": "A new Type Site is created with identifier {{ param }}",
+            "updated": "A Type Site is updated with identifier {{ param }}",
+            "deleted": "A Type Site is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Type Site {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Site"
+            },
+            "nom": "Nom",
+            "listTypeBoutique": "List Type Boutique"
+        }
+    }
+}
