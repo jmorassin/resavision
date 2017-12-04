@@ -1,0 +1,26 @@
+{
+    "resavisionApp": {
+        "responsable" : {
+            "home": {
+                "title": "Responsables",
+                "createLabel": "Criar novo Responsable",
+                "createOrEditLabel": "Criar ou editar Responsable",
+                "search": "Pesquisar por Responsable"
+            },
+            "created": "Um novo Responsable foi criado com o identificador {{ param }}",
+            "updated": "Um Responsable foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Responsable foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Responsable {{ id }}?"
+            },
+            "detail": {
+                "title": "Responsable"
+            },
+            "civilite": "Civilite",
+            "checkTel": "Check Tel",
+            "chekMail": "Chek Mail",
+            "user": "User",
+            "boutique": "Boutique"
+        }
+    }
+}

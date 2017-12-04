@@ -1,0 +1,25 @@
+{
+    "resavisionApp": {
+        "client" : {
+            "home": {
+                "title": "Clients",
+                "createLabel": "Criar novo Client",
+                "createOrEditLabel": "Criar ou editar Client",
+                "search": "Pesquisar por Client"
+            },
+            "created": "Um novo Client foi criado com o identificador {{ param }}",
+            "updated": "Um Client foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Client foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Client {{ id }}?"
+            },
+            "detail": {
+                "title": "Client"
+            },
+            "civilite": "Civilite",
+            "checkTel": "Check Tel",
+            "chekMail": "Chek Mail",
+            "user": "User"
+        }
+    }
+}

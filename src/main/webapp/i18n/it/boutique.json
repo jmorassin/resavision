@@ -1,0 +1,32 @@
+{
+    "resavisionApp": {
+        "boutique" : {
+            "home": {
+                "title": "Boutiques",
+                "createLabel": "Genera un nuovo Boutique",
+                "createOrEditLabel": "Genera o modifica un Boutique",
+                "search": "Cerca Boutique"
+            },
+            "created": "&Egrave; stato generato un nuovo Boutique con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Boutique identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Boutique con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Boutique {{ id }}?"
+            },
+            "detail": {
+                "title": "Boutique"
+            },
+            "nom": "Nom",
+            "logo": "Logo",
+            "url": "Url",
+            "numTelephone": "Num Telephone",
+            "mail": "Mail",
+            "adresse1": "Adresse 1",
+            "adresse2": "Adresse 2",
+            "employe": "Employe",
+            "ville": "Ville",
+            "typeBoutique": "Type Boutique",
+            "responsable": "Responsable"
+        }
+    }
+}

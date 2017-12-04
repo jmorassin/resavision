@@ -1,0 +1,23 @@
+{
+    "resavisionApp": {
+        "typeSite" : {
+            "home": {
+                "title": "TypeSites",
+                "createLabel": "Créer un nouveau Type Site",
+                "createOrEditLabel": "Créer ou éditer un Type Site",
+                "search": "Recherche pour Type Site"
+            },
+            "created": "Un nouveau Type Site a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Site avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Site avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Site {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type Site"
+            },
+            "nom": "Nom",
+            "listTypeBoutique": "List Type Boutique"
+        }
+    }
+}

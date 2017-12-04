@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Boutique.
+    -->
+    <changeSet id="20171204205626-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ville_id"
+                                 baseTableName="boutique"
+                                 constraintName="fk_boutique_ville_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ville"/>
+
+        <addForeignKeyConstraint baseColumnNames="boutiques_id"
+                                 baseTableName="boutique_type_boutique"
+                                 constraintName="fk_boutique_type_boutique_boutiques_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="boutique"/>
+        <addForeignKeyConstraint baseColumnNames="type_boutiques_id"
+                                 baseTableName="boutique_type_boutique"
+                                 constraintName="fk_boutique_type_boutique_type_boutiques_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_boutique"/>
+        
+    </changeSet>
+</databaseChangeLog>

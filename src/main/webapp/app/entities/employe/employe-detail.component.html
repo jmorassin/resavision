@@ -1,0 +1,43 @@
+
+<div *ngIf="employe">
+    <h2><span jhiTranslate="resavisionApp.employe.detail.title">Employe</span> {{employe.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resavisionApp.employe.civilite">Civilite</span></dt>
+        <dd>
+            <span jhiTranslate="{{'resavisionApp.Civilite.' + employe.civilite}}">{{employe.civilite}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.employe.checkTel">Check Tel</span></dt>
+        <dd>
+            <span>{{employe.checkTel}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.employe.chekMail">Chek Mail</span></dt>
+        <dd>
+            <span>{{employe.chekMail}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.employe.user">User</span></dt>
+        <dd>
+            {{employe.user?.id}}
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.employe.boutique">Boutique</span></dt>
+        <dd>
+            <div *ngIf="employe.boutique">
+                <a [routerLink]="['/boutique', employe.boutique?.id]">{{employe.boutique?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'employe/'+ employe.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

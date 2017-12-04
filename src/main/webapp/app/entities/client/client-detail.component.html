@@ -1,0 +1,37 @@
+
+<div *ngIf="client">
+    <h2><span jhiTranslate="resavisionApp.client.detail.title">Client</span> {{client.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resavisionApp.client.civilite">Civilite</span></dt>
+        <dd>
+            <span jhiTranslate="{{'resavisionApp.Civilite.' + client.civilite}}">{{client.civilite}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.client.checkTel">Check Tel</span></dt>
+        <dd>
+            <span>{{client.checkTel}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.client.chekMail">Chek Mail</span></dt>
+        <dd>
+            <span>{{client.chekMail}}</span>
+        </dd>
+        <dt><span jhiTranslate="resavisionApp.client.user">User</span></dt>
+        <dd>
+            {{client.user?.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'client/'+ client.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

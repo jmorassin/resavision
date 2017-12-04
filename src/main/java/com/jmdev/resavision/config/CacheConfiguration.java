@@ -42,6 +42,17 @@ public class CacheConfiguration {
             cm.createCache(com.jmdev.resavision.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.jmdev.resavision.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.jmdev.resavision.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.TypeSite.class.getName(), jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.TypeSite.class.getName() + ".listTypeBoutiques", jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.TypeBoutique.class.getName(), jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.TypeBoutique.class.getName() + ".listBoutiques", jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.Ville.class.getName(), jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.Boutique.class.getName(), jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.Boutique.class.getName() + ".employes", jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.Boutique.class.getName() + ".typeBoutiques", jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.Responsable.class.getName(), jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.Employe.class.getName(), jcacheConfiguration);
+            cm.createCache(com.jmdev.resavision.domain.Client.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

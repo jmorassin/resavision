@@ -7,6 +7,13 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
+                "typeSite": "Type Site",
+                "typeBoutique": "Type Boutique",
+                "ville": "Ville",
+                "boutique": "Boutique",
+                "responsable": "Responsable",
+                "employe": "Employe",
+                "client": "Client",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
