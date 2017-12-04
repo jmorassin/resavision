@@ -1,0 +1,100 @@
+// Enumerations
+enum JourSemaine {
+    LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE
+}
+
+enum Civilite {
+    MME, MELLE, MR
+}
+
+
+enum EtatRDV{
+    PREVU, EN_COURS, TERMINE, ANNULE_PAR_PATIENT, ANNULE_PAR_PROF, ABSENT
+}
+
+
+// Liste medecine / Soin beaute / sport
+entity TypeSite {
+    nom String required
+}
+
+
+
+// medcine : kine, ostheo,...
+entity TypeBoutique {
+    nom String required
+}
+
+relationship OneToMany {
+	TypeSite{listTypeBoutique} to TypeBoutique{typeSite(nom)} 
+}
+
+
+entity Ville {
+	nom String required,
+    codePostal String required
+}
+
+// =======================================
+// BOUTIQUE
+entity Boutique {
+    nom String required,
+    logo ImageBlob,
+    url String,
+    numTelephone String required,
+    mail  String required,
+    adresse1 String required,
+    adresse2 String        
+}
+	
+relationship ManyToMany {
+	 Boutique{typeBoutique(nom)} to TypeBoutique{listBoutique}
+}
+
+relationship ManyToOne {
+	Boutique{ville(nom)} to Ville
+}
+
+// =========================
+// PERSONNE
+entity  Responsable {
+	civilite Civilite,
+	checkTel Boolean,
+	chekMail Boolean
+	
+}
+relationship OneToOne{
+	Responsable{user} to User,
+	Responsable{boutique} to Boutique{responsable}
+}
+
+entity Employe {
+	civilite Civilite,
+	checkTel Boolean,
+	chekMail Boolean 
+}	
+
+relationship OneToOne{
+	Employe{user} to User
+}
+
+relationship OneToMany {
+	Boutique to Employe{boutique}
+}
+
+entity Client {
+	civilite Civilite,
+	checkTel Boolean,
+	chekMail Boolean 
+}	
+
+relationship OneToOne{
+	Client{user} to User
+}
+
+
+// =========================
+// INFORMATIONS GENERATION
+// =========================
+service * with serviceClass
+paginate * with pagination
