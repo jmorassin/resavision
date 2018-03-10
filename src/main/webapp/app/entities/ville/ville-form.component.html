@@ -1,0 +1,84 @@
+<div *ngIf="enConsultation">
+	<div *ngIf="ville">
+	    <h2><span jhiTranslate="resavisionApp.ville.detail.title">Ville</span> {{ville.id}}</h2>
+	    <hr>
+	    <jhi-alert-error></jhi-alert-error>
+	    <dl class="row-md jh-entity-details">
+	        <dt><span jhiTranslate="resavisionApp.ville.nom">Nom</span></dt>
+	        <dd>
+	            <span>{{ville.nom}}</span>
+	        </dd>
+	        <dt><span jhiTranslate="resavisionApp.ville.codePostal">Code Postal</span></dt>
+	        <dd>
+	            <span>{{ville.codePostal}}</span>
+	        </dd>
+	    </dl>
+	
+		<button type="button" (click)="previousState()" class="btn btn-info">
+	        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+		</button>
+	
+		<button type="button" (click)="swithForm()" 	
+			replaceUrl="true"
+	        class="btn btn-primary">
+			<span class="fa fa-pencil">
+			</span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+		</button>
+	    
+		<button type="button" (click)="nextState()" class="btn btn-info">
+			<span jhiTranslate="entity.action.next"> Next</span>&nbsp;
+	        	<span class="fa fa-arrow-right"></span>
+		</button>
+	</div>
+</div>
+
+
+
+<div *ngIf="enModification">
+	<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    	<div class="modal-header">
+        	<h4 class="modal-title" id="myVilleLabel" jhiTranslate="resavisionApp.ville.home.createOrEditLabel">Create or edit a Ville</h4>
+        </div>
+    	<div class="modal-body">
+        	
+        	<jhi-alert-error></jhi-alert-error>
+        	<input type="hidden" class="form-control" id="id" name="id"
+                   [(ngModel)]="ville.id" />
+        	
+        	<div class="form-group">
+            	<label class="form-control-label" jhiTranslate="resavisionApp.ville.nom" for="field_nom">Nom</label>
+            	<input type="text" class="form-control" name="nom" id="field_nom"
+                	[(ngModel)]="ville.nom" required/>
+            	<div [hidden]="!(editForm.controls.nom?.dirty && editForm.controls.nom?.invalid)">
+                	<small class="form-text text-danger"
+                   		[hidden]="!editForm.controls.nom?.errors?.required" jhiTranslate="entity.validation.required">
+                   		This field is required.
+                	</small>
+            	</div>
+        	</div>
+        	
+        	<div class="form-group">
+        	    <label class="form-control-label" jhiTranslate="resavisionApp.ville.codePostal" for="field_codePostal">Code Postal</label>
+        	    <input type="text" class="form-control" name="codePostal" id="field_codePostal"
+        	        [(ngModel)]="ville.codePostal" required/>
+        	    <div [hidden]="!(editForm.controls.codePostal?.dirty && editForm.controls.codePostal?.invalid)">
+        	        <small class="form-text text-danger"
+        	           [hidden]="!editForm.controls.codePostal?.errors?.required" jhiTranslate="entity.validation.required">
+        	           This field is required.
+        	        </small>
+        	    </div>
+        	</div>
+		</div>
+    	
+    	<div class="modal-footer" *ngIf="enCreation">
+        	<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="swithForm()" *ngIf="enCreation">
+            	<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        	</button>
+        	<button type="submit"  class="btn btn-primary">
+            	<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        	</button>
+    	</div>
+    	
+	</form>
+</div>

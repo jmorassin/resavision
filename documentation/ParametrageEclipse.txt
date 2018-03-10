@@ -1,0 +1,20 @@
+1 Excluding generated static folders
+
+	
+	Exclude the ‘node_modules’ folder
+	Right-click on Project -> Properties -> Resource -> Resource Filters
+	Select: Exclude all, Applies to folders, Name matches node_modules
+	Press “Ok”
+	Right-click
+
+2 Exclude ‘app’ from src/main/webapp
+	
+	Right click on Project -> Properties -> Javascript -> Include path
+	Click on the “source” tab and select your_project/src/main/webapp
+	Select “Excluded: (None) -> Edit -> Add multiple
+	Select app and click “Ok”
+	
+3 Maven IDE profile
+	In “Active Maven Profiles”, type dev,IDE
+	
+

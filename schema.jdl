@@ -1,0 +1,226 @@
+// Enumerations
+enum JourSemaine {
+    LUNDI, MARDI, MERCREDI, JEUDI, VENDREDI, SAMEDI, DIMANCHE
+}
+
+enum Civilite {
+    MME, MELLE, MR
+}
+
+
+enum EtatRDV{
+    PREVU, EN_COURS, TERMINE, ANNULE_PAR_PATIENT, ANNULE_PAR_PROF, ABSENT
+}
+
+enum Paiement {
+	CB_INTERNET, CB_LIVE, CHEQUE, LIQUIDE
+}
+
+// Liste medecine / Soin beaute / sport
+entity TypeSite {
+    nom String required
+}
+
+// medcine : kine, ostheo,...
+entity TypeBoutique {
+    nom String required
+}
+
+relationship OneToMany {
+	TypeSite{listTypeBoutique} to TypeBoutique{typeSite(nom)} 
+}
+
+entity Ville {
+	nom String required,
+    codePostal String required
+}
+
+// =======================================
+// BOUTIQUE
+entity Boutique {
+    nom String required,
+    logo ImageBlob,
+    url String,
+    numTelephone String required,
+    mail  String required,
+    adresse1 String required,
+    adresse2 String        
+}
+	
+relationship ManyToMany {
+	 Boutique{typeBoutique(nom)} to TypeBoutique{listBoutique}
+}
+
+relationship ManyToOne {
+	Boutique{ville(nom)} to Ville
+}
+
+// =======================================
+// PERSONNE : RESPONSABLE  - CLIENT 
+// =======================================
+entity User{
+}
+
+entity  Responsable {
+	civilite Civilite,
+	checkTel Boolean,
+	chekMail Boolean
+	
+}
+
+relationship OneToOne{
+	Responsable{user} to User,
+	Responsable{boutique} to Boutique{responsable}
+}
+
+entity Employe {
+	civilite Civilite,
+	checkTel Boolean,
+	chekMail Boolean 
+}	
+
+relationship OneToOne{
+	Employe{user} to User
+}
+
+relationship OneToMany {
+	Boutique to Employe{boutique}
+}
+
+entity Client {
+	civilite Civilite,
+	checkTel Boolean,
+	chekMail Boolean 
+}	
+
+relationship OneToOne{
+	Client{user} to User
+}
+
+// ========================
+// HEURE OUVERTURE
+// ========================
+entity PlanningSemaine {
+	nomPeriode String required,
+	defaultPlanning Boolean required
+}
+
+relationship OneToMany {
+	Boutique to PlanningSemaine{boutique}
+}
+
+relationship OneToOne {
+	PlanningSemaine{employe(nom)} to Employe 
+}
+
+	
+entity HeureOuverture {
+	jour JourSemaine,
+    heureOuverture ZonedDateTime,
+    heureFermeture ZonedDateTime
+}
+
+relationship OneToMany {
+	PlanningSemaine{listHeureOuverture} to HeureOuverture{planningSemaine}
+}
+
+entity PeriodeOuvertureModifie {
+	debutPeriode LocalDate,
+    finPeriode LocalDate
+}
+
+relationship OneToMany {
+	PlanningSemaine to PeriodeOuvertureModifie{planningSemaine},
+	Boutique to PeriodeOuvertureModifie{boutique},
+	Employe{listPeriodeHoraireModifie} to PeriodeOuvertureModifie
+}
+
+entity PeriodeFermeture {
+	debutPeriode LocalDate,
+    finPeriode LocalDate
+}
+
+relationship OneToMany {
+	Boutique{listPeriodeFermeture} to PeriodeFermeture{boutique},
+	Employe{listVacances} to PeriodeFermeture{employe}
+}
+
+// ========================
+// PRESTATION
+// ========================
+entity Rubrique {
+    nom String required,
+	description String required,
+	ordreTri Integer,
+    dateCreation LocalDate,
+    dateModification LocalDate
+}
+
+relationship OneToMany {
+	TypeBoutique{listRubrique} to Rubrique{typeBoutique},
+	Responsable{listRubrique} to Rubrique{auteur}
+}
+
+entity SousRubrique {
+    nom String required,
+	description String required,
+	ordreTri Integer,
+    dateCreation LocalDate,
+    dateModification LocalDate
+}
+
+relationship OneToMany {
+	Responsable{listSousRubrique} to SousRubrique{auteur},
+	Rubrique{listSousRubrique} to SousRubrique{rubrique}
+}
+
+entity Prestation {
+	lib String required,
+	description String,
+	ordreTri Integer required,
+    dateCreation LocalDate,
+    dateModification LocalDate
+}
+
+relationship OneToMany {
+	Rubrique{listPrestation} to Prestation{rubrique},
+	SousRubrique{listPrestation} to Prestation{sousRubrique},
+	Responsable{listPrestation} to Prestation{auteur} 
+}
+
+entity PrestationBoutique {
+	prixHT BigDecimal required,
+	prixTTC BigDecimal required,
+    duree BigDecimal required
+}
+
+relationship OneToMany {
+	Boutique{listPrestationBoutique} to PrestationBoutique{boutique},
+	Prestation{listPrestationBoutique} to PrestationBoutique{prestation},
+	SousRubrique{listPrestationBoutique} to PrestationBoutique{sousRubrique},
+	Rubrique{listPrestationBoutique} to PrestationBoutique{rubrique}
+}
+
+// ===============================================
+entity RDV {
+	etat EtatRDV,
+	date_creation LocalDate,
+	date_modification LocalDate	
+}
+
+relationship OneToOne {
+	RDV{client} to Client{rdv},
+	RDV{boutique} to Boutique{rdv},
+	RDV{employe} to Employe{rdv}
+}
+
+relationship OneToMany {
+	RDV{listPrestationBoutique} to PrestationBoutique
+}
+
+
+// =========================
+// INFORMATIONS GENERATION
+// =========================
+paginate * with pagination
+service * with serviceClass
